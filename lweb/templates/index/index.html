@@ -1,0 +1,215 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<meta name="google-site-verification" content="bTLuxzFGU-B9IoSvCgy1oElReDiG7Pm0uInWDqRMH1k" />
+
+		<title>Banquetes Latoso</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Nestor Velazquez | Comunicación Web MX" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		
+
+		<meta name="description" content="Banquetes Latoso, los más deliciosos menús y opciones para banquetes y eventos sociales" />
+		<meta name="keywords" content="banquetes, pozole, alimentos preparados, taquizas, tacos, tacos de guisado, guisados para llevar" />
+		<link rel="canonical" href="http://www.banqueteslatoso.in/" />
+
+
+		<!-- 
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		-->
+
+		<link href="{{ STATIC_URL }}styles/style.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="{{ STATIC_URL }}styles/base.css" rel="stylesheet" type="text/css" media="screen" />
+		<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.pikachoose.js"></script>
+		<script type="text/javascript">
+					$(document).ready(function() {
+					$("#pikame").PikaChoose();	});
+		</script>
+
+	</head>
+
+	<body>
+	<div id="container">
+      <header>
+        <nav>
+          <ul id="nav">
+            <li><a href="#" class="current">Inicio</a></li>
+            {% if lista_categorias %}
+					    {% for categoria in lista_categorias %}
+						    {% if categoria.receta == 0 %}
+						    	<li><a href="/lweb/{{ categoria.id }}/">{{ categoria.nombre }}</a></li>
+						    {% endif %}
+						{% endfor %}
+				{% else %}
+				    <p>No existen categorías registradas.</p>
+				{% endif %}
+          </ul>
+        </nav>
+        
+		<hgroup class="intro">
+          <h1 class="title">Banquetes Latoso</h1>
+        </hgroup>
+        
+		<div class="reservations"><br />
+          <span class="reservations-title">Tel:</span>
+          <hr class="hr-solid" />
+          <span style="font-family: 'Lobster13Regular', cursive;">(044)5540630589</span>
+          <hr class="hr-dashed" />
+          <div style="margin-top:15px"> <a class="button" href="mailto:latoso@comunicacionweb.com.mx"  title="Envianos un Email">Email</a> </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </header>
+	
+	
+	<div class="wrapper">
+        <div class="pikachoose">
+          <ul id="pikame">
+            <li><a href=""><img src="{{ STATIC_URL }}images/sitio/pozole.jpg" title="Polozle" alt="Polozle" /></a></li>
+            <li><a href=""><img src="{{ STATIC_URL }}images/sitio/DULCES2.jpg" title="Dulces mexicanos" alt="Dulces mexicanos" /></a></li>
+            <li><a href=""><img src="{{ STATIC_URL }}images/sitio/pechugas.jpg" title="Pechugas rellenas" alt="Pechugas rellenas" /></a></li>
+            <li><a href=""><img src="{{ STATIC_URL }}images/sitio/bocadillos.jpg" title="Ciento de bocadillos" alt="Ciento de bocadillos" /></a></li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="border"></div>
+        	<div style="margin: 0px auto; width: 700px; padding: 50px; text-align: justify;">
+        		En <strong>banquetes latoso</strong> elaboramos los alimentos el día del evento, garantizamos frescura y el mejor sabor.
+        		También utilizamos los mejores ingredientes y contamos con personal altamente capacitado. 
+        		
+        		La comida siempre estará caliente y a tiempo, pues no exedemos nuestra capacidad de servicio, de manera sus invitados estarán contentos y agradecidos por tan buena comida, 
+        		se lo garantizamos en banquetes latosococinamos la mejor comida, nuestro espíritu de servicio es inigualable nuestros precios son muy accesibles y procuramos que su evento sea magnifico. 
+        		
+        		 
+        	</div>
+        <div class="border"></div>
+        {% if lstms %}
+        	{% for tema in lstms %}
+        <div class="home-widget">
+          <h3>{{ tema.titulo_tema }}</h3>
+          <a href="{{ tema.id }}/tipo" title="{{ tema.titulo_tema }}">
+          	<img src="{{ STATIC_URL }}images/sitio/{{ tema.nombre_imagen }}" width="300px" height="145px" alt="{{ tema.titulo_tema }}" />
+          </a>
+          
+        </div>
+        	{% endfor %}
+        {% endif %}
+        
+        
+        <div class="border2"></div>
+        <br />
+        <!--
+        <aside id="pricing-table" class="clear">
+          <div class="plan">
+            <h3>Breakfast<span>$99</span></h3>
+            <a class="button" href="">Order Now</a>
+            <ul>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+            </ul>
+          </div>
+          <div class="plan">
+            <h3>Lunch<span>$99</span></h3>
+            <a class="button" href="">Order Now</a>
+            <ul>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+            </ul>
+          </div>
+          <div class="plan">
+            <h3>Dinner<span>$99</span></h3>
+            <a class="button" href="">Order Now</a>
+            <ul>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+              <li><strong style="text-transform:uppercase">lorem Ipsum</strong> Dolor Sit Amet</li>
+            </ul>
+          </div>
+        </aside>
+        -->
+      </div>
+	<!-- Footer -->	
+	<footer>
+        <div class="border"></div>
+        <div class="footer-widget">
+          <h4>Contacto</h4>
+          	<p>Tel. (044)5540630589 </p>
+          	<p>E mail. latoso22@gmail.com </p>
+          	<script type="text/javascript" src="http://www.123contactform.com/includes/tinybox/tinybox.js"></script>
+<link rel="stylesheet" href="http://www.123contactform.com/includes/tinybox/tinyboxstyle.css"/>
+<a href="javascript:" title="Solicita información sobre banquetes" onclick="TINY.box.show({iframe:'http://www.123contactform.com/form-601764/Contacto-Banquetes-Latoso',boxid:'frameless',width:690,height:355,fixed:false,maskid:'bluemask',maskopacity:40})">Solicita más información</a>
+          	
+        </div>
+        <div class="footer-widget">
+          <h4>Otros menús</h4>
+          <ul class="blog">
+          	{% if lstms2 %}
+        		{% for tema in lstms2 %}
+            <li><a href="{{ tema.id }}/tipo" >{{ tema.titulo_tema }}</a><br/>
+              <br/> </li>
+              	{% endfor %}
+            {% endif %}
+              
+          </ul>
+        </div>
+        <div class="footer-widget">
+          <h4>Sigue nuestras redes sociales!</h4>
+          <div id="social"> 
+          	<a href="https://twitter.com/BanquetesLatoso" class="s3d twitter" target="_blank"> Twitter <span class="icons twitter"></span> </a>
+          	<a href="https://www.facebook.com/BanquetesLatoso" class="s3d facebook" target="_blank"> Facebook <span class="icons facebook"></span> </a>
+          	
+          	
+          	
+          </div>
+        </div>
+        <div class="border2"></div>
+        <br />
+        <span class="copyright"><span class="left"><br />
+        &copy; Banquetes Latoso<span class="right"><br />
+        			<p>Powered by...</p>
+        	<img src="/static/images/django.png" alt="django" title="django" width="5%"/>
+			<img src="/static/images/html5.png" alt="html5" title="HTML 5" width="5%"/>
+			<img src="/static/images/css3.png" alt="css3" title="CSS 3" width="5%"/>
+			<img src="/static/images/jquery.png" alt="jquery" title="jquery" width="5%"/><br />
+        Desarrollado por <a href="http://www.comunicacionweb.com.mx">Comunicación Web MX</a><br />
+        <br>
+        <br />
+        </span></span></footer>
+		
+		
+		
+	</div>
+	</body>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10015814-17']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</html>

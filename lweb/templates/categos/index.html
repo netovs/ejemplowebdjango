@@ -1,0 +1,189 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<meta name="google-site-verification" content="bTLuxzFGU-B9IoSvCgy1oElReDiG7Pm0uInWDqRMH1k" />
+
+		<title>{{ cat.nombre }} | Banquetes Latoso</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Nestor Velazquez | Comunicación Web MX" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<meta name="description" content="Banquetes Latoso, los más deliciosos menús y opciones para banquetes y eventos sociales" />
+		<meta name="keywords" content="banquetes, alimentos preparados, taquizas, tacos, tacos de guisado, guisados para llevar" />
+		<link rel="canonical" href="http://www.banqueteslatoso.in/" />
+
+
+		<!-- 
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		-->
+
+		<link href="{{ STATIC_URL }}styles/style.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="{{ STATIC_URL }}styles/base.css" rel="stylesheet" type="text/css" media="screen" />
+		<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.pikachoose.js"></script>
+		<script type="text/javascript">
+					$(document).ready(function() {
+					$("#pikame").PikaChoose();	});
+		</script>
+
+	</head>
+
+	<body>
+	<div id="container">
+		<header>
+        <nav>
+        	
+          <ul id="nav">
+            <li><a href="http://www.banqueteslatoso.in">Inicio</a></li>
+            
+            {% if lista_categorias %}
+					    {% for categoria in lista_categorias %}
+					    	{% if categoria.id == cat.id and categoria.receta == 0 %}
+					    		<li><a href="/lweb/{{ categoria.id }}/" class="current">{{ categoria.nombre }}</a></li>
+					    	{% else %}
+					    		{% if categoria.nombre = 'Recetas' %}
+					    		{% else %}
+								<li><a href="/lweb/{{ categoria.id }}/" >{{ categoria.nombre }}</a></li>
+								{% endif %}
+							{% endif %}
+					    
+						{% endfor %}
+				{% else %}
+				    <p>No existen categorías registradas.</p>
+				{% endif %}
+          </ul>
+        </nav>
+        
+		<hgroup class="intro">
+          <h1 class="title">Banquetes Latoso</h1>
+        </hgroup>
+        
+		<div class="reservations"><br />
+          <span class="reservations-title">Tel:</span>
+          <hr class="hr-solid" />
+          <span style="font-family: 'Lobster13Regular', cursive;">(044)5540630589</span>
+          <hr class="hr-dashed" />
+          <div style="margin-top:15px"> <a class="button" href="mailto:latoso@comunicacionweb.com.mx" title="Envianos un Email">Email</a> </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </header>
+      
+      
+<div class="wrapper">
+    <div class="border"></div>
+    <article>
+      <h3>{{ cat.nombre }}</h3>
+      <div class="date">
+      	<span class="day">* &nbsp;</span>
+      </div>
+      <!--
+      <img src="{{ STATIC_URL }}images/home/3.jpg" width="300" class="right" alt="" />
+      -->
+      <p>
+      	{{ cat.descripcion|safe }}
+      </p>
+      
+      
+    </article>
+    <aside class="sidebar">
+      <h3>{{ cat.nombre }}</h3>
+
+      {% if lista_temas %}
+      	{% for tmdt in lista_temas %}
+			<img src="{{ STATIC_URL }}images/sitio/{{ tmdt.nombre_imagen }}" width="280" alt="" />
+      		<p><strong>{{ tmdt.titulo_tema }}</strong><br /> 
+      		<a href="../{{ tmdt.id }}/tipo" class="right" style="padding-top:7px"><strong>Más detalles &raquo;</strong></a></p>
+      	{% endfor %}
+      {% else %}
+      	<p><strong>Por ahora no hay temas disponibles</strong>
+      {% endif %}
+      
+    </aside>
+    <div class="border2"></div>
+    <br>
+  </div>
+  
+<!-- Footer -->	
+	<footer>
+        <div class="border"></div>
+        <div class="footer-widget">
+          <h4>Contacto</h4>
+          	<p>Tel. (044)5540630589 </p>
+          	<p>E mail. latoso22@gmail.com </p>
+          	<script type="text/javascript" src="http://www.123contactform.com/includes/tinybox/tinybox.js"></script>
+<link rel="stylesheet" href="http://www.123contactform.com/includes/tinybox/tinyboxstyle.css"/>
+<a href="javascript:" title="Solicita información sobre banquetes" onclick="TINY.box.show({iframe:'http://www.123contactform.com/form-601764/Contacto-Banquetes-Latoso',boxid:'frameless',width:690,height:355,fixed:false,maskid:'bluemask',maskopacity:40})">Solicita más información</a>
+        </div>
+        <div class="footer-widget">
+          <h4>Otros menús</h4>
+          <ul class="blog">
+          	{% if lstms2 %}
+        		{% for tema in lstms2 %}
+            <li><a href="../{{ tema.id }}/tipo">{{ tema.titulo_tema }}</a><br/>
+              <br/> </li>
+              	{% endfor %}
+            {% endif %}
+              
+          </ul>
+        </div>
+        <div class="footer-widget">
+          <h4>Sigue nuestras redes sociales!</h4>
+          <div id="social"> 
+          	<a href="https://twitter.com/BanquetesLatoso" class="s3d twitter" target="_blank"> Twitter <span class="icons twitter"></span> </a>
+          	<a href="https://www.facebook.com/BanquetesLatoso" class="s3d facebook" target="_blank"> Facebook <span class="icons facebook"></span> </a>
+          	
+          
+          	
+          </div>
+        </div>
+        <div class="border2"></div>
+        <br />
+        <span class="copyright"><span class="left"><br />
+        &copy; Banquetes Latoso<span class="right"><br />
+        			<p>Powered by...</p>
+        	<img src="/static/images/django.png" alt="django"title="django" width="5%"/>
+			<img src="/static/images/html5.png" alt="html5" title="HTML 5" width="5%"/>
+			<img src="/static/images/css3.png" alt="css3" title="CSS 3" width="5%"/>
+			<img src="/static/images/jquery.png" alt="jquery" title="jquery" width="5%"/><br />
+        Desarrollado por <a href="http://www.comunicacionweb.com.mx">Comunicación Web MX</a><br />
+        <br>
+        <br />
+        </span></span>
+        </footer>
+		
+		
+		
+	</div>
+	
+</body>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10015814-17']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</html>
+	
+
+
